@@ -1,23 +1,29 @@
-import logo from './logo.svg';
 import './App.css';
+import {BrowserRouter, Switch, Route, Redirect} from "react-router-dom";
+import Navbar from './components/Navbar/Navbar';
+import Home from './components/Home/Home';
+import User from './components/User/User';
+import Auth from './components/Auth/Auth';
+import Contact from './components/Contact/Contact';
+import About from './components/About/About';
+import Footer from './components/Footer/Footer';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <BrowserRouter>
+      <Navbar></Navbar>
+        <Switch>
+          <Route exact path="/" component={Home}></Route>
+          <Route exact path="/users/:userId" component={User}></Route>
+          <Route exact path="/auth">
+          <Route exact path="/contact" component={Contact}></Route>
+          <Route exact path="/about" component={About}></Route>
+          {localStorage.getItem("currentUser") != null ? <Redirect to="/"/>: <Auth/>} 
+          </Route>
+        </Switch>
+        <Footer></Footer>
+      </BrowserRouter>
     </div>
   );
 }

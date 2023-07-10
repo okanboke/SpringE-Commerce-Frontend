@@ -1,0 +1,16 @@
+.ortalama {
+    margin-right: 15%;
+    margin-left: 15%;
+}
+
+.foto {
+    height: 100vh;
+}
+.image {
+    background-image: url("../../Photo/giris3.jpg");
+    background-repeat: no-repeat;
+    background-color: lightblue;
+    background-size: cover;
+    background-position: center;
+
+}
